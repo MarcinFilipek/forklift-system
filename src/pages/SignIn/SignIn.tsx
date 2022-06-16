@@ -40,6 +40,7 @@ export const SignIn = () => {
                         >
                             <Grid item xs={12}>
                                 <TextField
+                                    data-testid="login-input"
                                     id="login"
                                     label="Nazwa użytkownika"
                                     type="text"
@@ -49,6 +50,7 @@ export const SignIn = () => {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    data-testid="password-input"
                                     id="password"
                                     label="Hasło"
                                     type="password"
