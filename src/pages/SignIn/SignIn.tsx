@@ -1,6 +1,7 @@
 import { Container } from '@mui/system'
 import { Button, Grid, TextField } from '@mui/material'
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 export const SignIn = () => {
     const handleSubmit = (event: React.SyntheticEvent) => {
@@ -68,7 +69,7 @@ export const SignIn = () => {
                                             variant="contained"
                                             type="submit"
                                         >
-                                            Sign in
+                                            <FormattedMessage id="signIn" />
                                         </Button>
                                     </Grid>
                                 </Grid>
