@@ -1,9 +1,10 @@
 import { Container } from '@mui/system'
 import { Button, Grid, TextField } from '@mui/material'
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 export const SignIn = () => {
+    const intl = useIntl()
     const handleSubmit = (event: React.SyntheticEvent) => {
         event.preventDefault()
         const target = event.target as typeof event.target & {
@@ -43,7 +44,9 @@ export const SignIn = () => {
                                 <TextField
                                     data-testid="login-input"
                                     id="login"
-                                    label="Nazwa użytkownika"
+                                    label={intl.formatMessage({
+                                        id: 'userName',
+                                    })}
                                     type="text"
                                     variant="standard"
                                     fullWidth
@@ -53,7 +56,9 @@ export const SignIn = () => {
                                 <TextField
                                     data-testid="password-input"
                                     id="password"
-                                    label="Hasło"
+                                    label={intl.formatMessage({
+                                        id: 'password',
+                                    })}
                                     type="password"
                                     autoComplete="current-password"
                                     variant="standard"

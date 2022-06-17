@@ -1,3 +1,5 @@
 {
-    "signIn": "Zaloguj"
+    "signIn": "Zaloguj",
+    "userName": "Nazwa użytkownika",
+    "password": "Hasło"
 }
