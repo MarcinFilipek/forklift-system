@@ -1,19 +1,19 @@
 import { Container } from '@mui/system'
 import { Button, Grid, TextField } from '@mui/material'
 import React from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
 
-export const SignIn = () => {
-    const intl = useIntl()
-    const handleSubmit = (event: React.SyntheticEvent) => {
-        event.preventDefault()
-        const target = event.target as typeof event.target & {
-            login: { value: string }
-            password: { value: string }
-        }
-
-        console.log(target.login.value, target.password.value)
-    }
+type Props = {
+    loginText: string
+    passwordText: string
+    buttonText: string
+    handleSubmit: (event: React.SyntheticEvent) => void
+}
+export const SignIn = ({
+    loginText,
+    passwordText,
+    buttonText,
+    handleSubmit,
+}: Props) => {
     return (
         <div
             style={{
@@ -44,9 +44,7 @@ export const SignIn = () => {
                                 <TextField
                                     data-testid="login-input"
                                     id="login"
-                                    label={intl.formatMessage({
-                                        id: 'userName',
-                                    })}
+                                    label={loginText}
                                     type="text"
                                     variant="standard"
                                     fullWidth
@@ -56,9 +54,7 @@ export const SignIn = () => {
                                 <TextField
                                     data-testid="password-input"
                                     id="password"
-                                    label={intl.formatMessage({
-                                        id: 'password',
-                                    })}
+                                    label={passwordText}
                                     type="password"
                                     autoComplete="current-password"
                                     variant="standard"
@@ -74,7 +70,7 @@ export const SignIn = () => {
                                             variant="contained"
                                             type="submit"
                                         >
-                                            <FormattedMessage id="signIn" />
+                                            {buttonText}
                                         </Button>
                                     </Grid>
                                 </Grid>
