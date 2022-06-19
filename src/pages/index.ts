@@ -1,2 +1,2 @@
 export { Home } from './Home'
-export { SignIn } from './SignIn'
+export { SignIn, SignInAdapter } from './SignIn'
