@@ -5,10 +5,13 @@ import { App } from './App'
 import { BrowserRouter } from 'react-router-dom'
 import { IntlProvider } from 'react-intl'
 import { getMessages, Locale } from './i18n'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const root = createRoot(document.getElementById('root') as HTMLElement)
 
 const language = navigator.language.split(/[-_]/)[0]
+
+const queryClient = new QueryClient()
 
 root.render(
     <React.StrictMode>
@@ -17,9 +20,11 @@ root.render(
             locale={language}
             defaultLocale={Locale.English}
         >
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
+            <QueryClientProvider client={queryClient}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </QueryClientProvider>
         </IntlProvider>
     </React.StrictMode>
 )

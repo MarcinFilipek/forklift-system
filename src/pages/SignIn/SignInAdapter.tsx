@@ -1,8 +1,11 @@
 import { useIntl } from 'react-intl'
 import { SignIn } from './SignIn'
+import { useAuth } from '../../hooks'
 
 export const SignInAdapter = () => {
     const intl = useIntl()
+    const { signIn } = useAuth()
+
     const loginText = intl.formatMessage({
         id: 'userName',
     })
@@ -18,7 +21,7 @@ export const SignInAdapter = () => {
             login: { value: string }
             password: { value: string }
         }
-        console.log(target.login, target.password)
+        signIn({ login: target.login.value, password: target.password.value })
     }
     return (
         <SignIn
