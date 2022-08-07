@@ -21,3 +21,28 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`Running at port ${PORT}`)
 })
+
+app.post('/api/sign-in', (req, res) => {
+    const { body } = req
+    const { login, password } = body
+
+    const authToken = Math.random().toString(36).substring(2)
+    const refreshToken = Math.random().toString(36).substring(2)
+
+    const userData = {
+        id: 1,
+        firstName: 'Marcin',
+        lastName: 'Filipek',
+    }
+
+    if (login === 'admin' && password === 'admin') {
+        res.status(200).json({
+            auth: true,
+            authToken,
+            refreshToken,
+            ...userData,
+        })
+    } else {
+        res.status(400).json({ error: 'Sign-in error' })
+    }
+})
